@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site - GitHub Pages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .json-content {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Conteúdo do Meu Site</h1>
+    <div id="content">
+        <p>Carregando conteúdo...</p>
+    </div>
+
+    <script>
+        // Função para carregar e exibir o conteúdo do arquivo JSON
+        fetch('elementor-226-2025-09-18.json')
+            .then(response => response.json())
+            .then(data => {
+                const content = document.getElementById('content');
+                // Gerando o conteúdo visual a partir do JSON
+                const jsonString = JSON.stringify(data, null, 2);
+                content.innerHTML = `<pre class="json-content">${jsonString}</pre>`;
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o arquivo JSON:', error);
+                const content = document.getElementById('content');
+                content.innerHTML = "<p>Erro ao carregar o conteúdo.</p>";
+            });
+    </script>
+
+</body>
+</html>
